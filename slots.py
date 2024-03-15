@@ -10,6 +10,8 @@ from time import sleep
 import random
 
 MAX_BET = 50000
+STARTING_MONEY = 500
+
 TILES = {"$":0.020, "§":0.050, "#":0.070, "Ʊ":0.100, "Ӂ":0.130, "ȸ":0.150, "!":0.18, "&":0.30} # TO-DO: create weighted matrix of win probabilities rather than per-tile probabilities
 REWARD_MULTIPLIERS = {"$":100, "§":50, "#":25, "Ʊ":15, "Ӂ":12, "ȸ":8, "!":5, "&":2} # Rewards are created by multiplying bets by this number
 
@@ -36,7 +38,7 @@ class Game:
             print(RESET_STYLE + "\n")  
 
     def main():
-        player_money = 500
+        player_money = STARTING_MONEY
         while player_money > 0:
             print(MONEY_STYLE + "YOU HAVE " + Fore.RED + str(player_money) + Fore.GREEN + " MONEYS")
             print(NORMAL_STYLE) # This just resets the terminal style
