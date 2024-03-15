@@ -14,9 +14,9 @@ TILES = {"$":0.020, "§":0.050, "#":0.070, "Ʊ":0.100, "Ӂ":0.130, "ȸ":0.150, "
 REWARD_MULTIPLIERS = {"$":100, "§":50, "#":25, "Ʊ":15, "Ӂ":12, "ȸ":8, "!":5, "&":2} # Rewards are created by multiplying bets by this number
 
 NORMAL_STYLE = Fore.GREEN + Back.BLACK + Style.NORMAL
-MONEY_STYLE = Fore.GREEN + Back.CYAN + Style.BRIGHT
+MONEY_STYLE = Fore.BLACK + Back.GREEN + Style.BRIGHT
 SLOT_STYLE = Fore.CYAN + Back.BLACK + Style.NORMAL
-WIN_STYLE = Fore.GREEN + Back.LIGHTMAGENTA_EX + Style.BRIGHT
+WIN_STYLE = Fore.BLACK + Back.LIGHTMAGENTA_EX + Style.BRIGHT
 LOSS_STYLE = Fore.RED + Back.BLACK + Style.NORMAL
 RESET_STYLE = Fore.RESET + Back.RESET + Style.RESET_ALL
 
