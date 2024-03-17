@@ -8,4 +8,4 @@
 
 Made in Python 3.10.11. 
 
-Requires `colorama`. Install using `pip install colorama`.
+Requires `colorama`. Install this library using `pip install colorama`. Then run the script with Python.
