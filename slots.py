@@ -5,16 +5,36 @@
 #                          #
 ############################
 
-from colorama import init,Fore,Back,Style
+from colorama import init, Fore, Back, Style
 from time import sleep
 import random
 
 MAX_BET = 50000
 STARTING_MONEY = 500
 
-TILES = {"$":0.020, "§":0.050, "#":0.070, "Ʊ":0.100, "Ӂ":0.130, "ȸ":0.150, "!":0.18, "&":0.30} # TO-DO: create weighted matrix of win probabilities rather than per-tile probabilities
-REWARD_MULTIPLIERS = {"$":100, "§":50, "#":25, "Ʊ":15, "Ӂ":12, "ȸ":8, "!":5, "&":2} # Rewards are created by multiplying bets by this number
+TILES = {  # Probabilities of each tile coming up; should add up to 1. TO-DO: create weighted matrix of win probabilities rather than per-tile probabilities
+    "$": 0.020,
+    "§": 0.050,
+    "#": 0.070,
+    "Ʊ": 0.100,
+    "Ӂ": 0.130,
+    "ȸ": 0.150,
+    "!": 0.18,
+    "&": 0.30,
+}
+REWARD_MULTIPLIERS = {  # Rewards are created by multiplying bets by this number
+    "$": 100,
+    "§": 50,
+    "#": 25,
+    "Ʊ": 15,
+    "Ӂ": 12,
+    "ȸ": 8,
+    "!": 5,
+    "&": 2,
+}
 
+# These are style definitions from colorama.
+# Styles must be reset or forcefully changed. They don't automatically reset to default.
 NORMAL_STYLE = Fore.GREEN + Back.BLACK + Style.NORMAL
 MONEY_STYLE = Fore.BLACK + Back.GREEN + Style.BRIGHT
 SLOT_STYLE = Fore.CYAN + Back.BLACK + Style.NORMAL
@@ -110,6 +130,7 @@ class Slots:
         if slot1 == slot2 == slot3:
             reward_multiplier = REWARD_MULTIPLIERS[slot3[0]] # Read any slot value, since you're in the loop where you won...
             return reward_multiplier
+        # Partial 2-slot win evaluation
         elif [slot1[0],slot2[0],slot3[0]].count(slot1[0]) == 2:
             reward_multiplier = REWARD_MULTIPLIERS[slot1[0]] / 2
             return reward_multiplier
