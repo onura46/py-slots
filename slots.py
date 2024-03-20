@@ -46,8 +46,9 @@ class Game:
     def __init__(self) -> None:
         # Colorama Initialize
         init()
+        self.HIGHEST_MONEY = 0
 
-    def intro():
+    def intro(self):
         # Flashes the title
         for i in range(1,6):
             print(Fore.GREEN + Back.RED + Style.BRIGHT + "SLOTS SLOTS SLOTS SLOTS SLOTS SLOTS", end="\r")
@@ -57,9 +58,11 @@ class Game:
         for i in range (1,2):
             print(RESET_STYLE + "\n")  
 
-    def main():
+    def main(self):
         player_money = STARTING_MONEY
         while player_money > 0:
+            if player_money > self.HIGHEST_MONEY: # High score
+                self.HIGHEST_MONEY = player_money
             print(MONEY_STYLE + "YOU HAVE " + Fore.RED + str(player_money) + Fore.GREEN + " MONEYS")
             print(NORMAL_STYLE) # This just resets the terminal style
 
@@ -73,7 +76,7 @@ class Game:
         else:
             pass # Moves on to Game Over
     
-    def over():
+    def over(self):
         # Game Over; just flashes up some text to taunt you before quitting
         for i in range(1,20):
             print(Fore.RED + Back.BLACK + Style.BRIGHT + "GAME OVER! YOU LOSE! HUGE L! SO BAD!", end="\r")
@@ -86,7 +89,10 @@ class Game:
             sleep(0.10)
         print(NORMAL_STYLE)
         print(f"\n")
+        print(WIN_STYLE + f"AT YOUR PEAK, YOU BANKED {self.HIGHEST_MONEY} MONEYS!")
+        print(NORMAL_STYLE)
         print(Fore.RED + Back.BLACK + Style.BRIGHT + "GOODBYE! :)")
+        print(f"\n")
         sleep(4)
 
 class Slots:
@@ -148,7 +154,7 @@ class Slots:
         slot = random.choices(list(TILES.keys()),weights=TILES.values()) # Choose a random tile by weight
         return slot
 
-Game()
-Game.intro()
-Game.main()
-Game.over()
+g = Game()
+g.intro()
+g.main()
+g.over()
