@@ -36,9 +36,9 @@ REWARD_MULTIPLIERS = {  # Rewards are created by multiplying bets by this number
 # These are style definitions from colorama.
 # Styles must be reset or forcefully changed. They don't automatically reset to default.
 NORMAL_STYLE = Fore.GREEN + Back.BLACK + Style.NORMAL
-MONEY_STYLE = Fore.BLACK + Back.GREEN + Style.BRIGHT
+MONEY_STYLE = Fore.GREEN + Back.BLACK + Style.BRIGHT
 SLOT_STYLE = Fore.CYAN + Back.BLACK + Style.NORMAL
-WIN_STYLE = Fore.BLACK + Back.LIGHTMAGENTA_EX + Style.BRIGHT
+WIN_STYLE = Fore.WHITE + Back.LIGHTMAGENTA_EX + Style.BRIGHT
 LOSS_STYLE = Fore.RED + Back.BLACK + Style.NORMAL
 RESET_STYLE = Fore.RESET + Back.RESET + Style.RESET_ALL
 
@@ -63,7 +63,7 @@ class Game:
         while player_money > 0:
             if player_money > self.HIGHEST_MONEY: # High score
                 self.HIGHEST_MONEY = player_money
-            print(MONEY_STYLE + "YOU HAVE " + Fore.RED + str(player_money) + Fore.GREEN + " MONEYS")
+            print(MONEY_STYLE + "YOU HAVE " + str(player_money) + " MONEYS")
             print(NORMAL_STYLE) # This just resets the terminal style
 
             bet = Slots.bet(player_money)
@@ -72,7 +72,7 @@ class Game:
 
             reward_multiplier = Slots.spin(bet) # SPIN
             if reward_multiplier != None: # PAYOUT
-                player_money = player_money + (bet * reward_multiplier)
+                player_money = player_money + round(bet * reward_multiplier)
         else:
             pass # Moves on to Game Over
     
